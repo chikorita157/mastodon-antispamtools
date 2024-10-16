@@ -1,3 +1,26 @@
+# Mastodon with Anti-Spam Tools
+This is a fork of Vanilla Mastodon which gives tools to admins to easily deal with SPAM. These includes the following experimental tools:
+* Reject Pattern (Use regex patterns to reject posts that match the Rex Pattern, from Fedibird - https://github.com/fedibird/mastodon/tree/add-reject-blurhash-v4.3.0)
+* Enable rejection of Create Activities if the status includes unusable hashtags, from https://github.com/mastodon/mastodon/pull/29264 (Not implemented in Mastodon yet)
+
+To switch to this repo, run the following as the mastodon user:
+cd live
+git remote add mastodon-antispamtools https://github.com/moyitpro/mastodon-antispamtools.git
+git fetch mastodon-antispamtools
+git checkout mastodon-antispamtools/stable-4.3
+
+Login as root and run the following:
+systemctl reload mastodon-web && systemctl restart mastodon-{sidekiq,streaming}
+
+Switch back to mastodon User and run the following
+cd live
+RAILS_ENV=production bin/tootctl cache clear
+
+To switch back to the vanilla release:
+git checkout origin/stable-4.3
+
+This repo will rebase when a new release of the current version becomes available.
+
 <h1><picture>
   <source media="(prefers-color-scheme: dark)" srcset="./lib/assets/wordmark.dark.png?raw=true">
   <source media="(prefers-color-scheme: light)" srcset="./lib/assets/wordmark.light.png?raw=true">
