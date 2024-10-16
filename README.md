@@ -4,20 +4,28 @@ This is a fork of Vanilla Mastodon which gives tools to admins to easily deal wi
 * Enable rejection of Create Activities if the status includes unusable hashtags, from https://github.com/mastodon/mastodon/pull/29264 (Not implemented in Mastodon yet)
 
 To switch to this repo, run the following as the mastodon user:
+```shell
 cd live
-git remote add mastodon-antispamtools https://github.com/moyitpro/mastodon-antispamtools.git
+git remote add mastodon-antispamtools https://github.com/chikorita157/mastodon-antispamtools.git
 git fetch mastodon-antispamtools
 git checkout mastodon-antispamtools/stable-4.3
+```
 
 Login as root and run the following:
+```shell
 systemctl reload mastodon-web && systemctl restart mastodon-{sidekiq,streaming}
+```
 
 Switch back to mastodon User and run the following
+```shell
 cd live
 RAILS_ENV=production bin/tootctl cache clear
+```
 
 To switch back to the vanilla release:
+```shell
 git checkout origin/stable-4.3
+```
 
 This repo will rebase when a new release of the current version becomes available.
 
