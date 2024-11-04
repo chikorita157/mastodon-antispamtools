@@ -3,6 +3,8 @@ This is a fork of Vanilla Mastodon which gives tools to admins to easily deal wi
 * Reject Pattern (Use regex patterns to reject posts that match the Rex Pattern, from Fedibird - https://github.com/fedibird/mastodon/tree/add-reject-blurhash-v4.3.0)
 * Enable rejection of Create Activities if the status includes unusable hashtags, from https://github.com/mastodon/mastodon/pull/29264 (Not implemented in Mastodon yet)
 
+**Need Reject Patterns for QR Codes?** This feature is in a [seperate branch](https://github.com/chikorita157/mastodon-antispamtools/tree/stable-4.3-mediarejectpatterns). View that branch in Github and see the readme file on how to set up that version with this feature.
+
 To switch to this repo, run the following as the mastodon user:
 ```shell
 cd live
