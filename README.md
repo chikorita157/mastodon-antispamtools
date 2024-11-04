@@ -6,6 +6,16 @@ This is a fork of Vanilla Mastodon which gives tools to admins to easily deal wi
 
 This branch is seperate since decoding and checking QR against the reject pattern will use more processing power. This requires the installation of [qrtool](https://github.com/sorairolake/qrtool) to work fully.
 
+Install the qrtool binary and copy it to /usr/bin. **Note:** Make sure you have **zstd** package installed, or the archive will not extract.
+
+```shell
+wget https://github.com/sorairolake/qrtool/releases/download/v0.11.6/qrtool-v0.11.6-x86_64-unknown-linux-musl.tar.zst
+tar --zstd -xvf  qrtool-v0.11.6-x86_64-unknown-linux-musl.tar.zst
+copy the binary to /usr/bin
+cd qrtool-v0.11.6-x86_64-unknown-linux-musl
+cp qrtool /usr/bin
+```
+
 To switch to this repo, run the following as the mastodon user:
 ```shell
 cd live
