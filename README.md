@@ -1,14 +1,17 @@
 # Mastodon with Anti-Spam Tools
 This is a fork of Vanilla Mastodon which gives tools to admins to easily deal with SPAM. These includes the following experimental tools:
-* Reject Pattern (Use regex patterns to reject posts that match the Rex Pattern, from Fedibird - https://github.com/fedibird/mastodon/tree/add-reject-blurhash-v4.3.0)
+* Reject Pattern (Use regex patterns to reject posts that match the Regex Pattern, from Fedibird - https://github.com/fedibird/mastodon/tree/add-reject-blurhash-v4.3.0)
+* Reject Pattern for Media Attachments (Use regex patterns to reject posts with QR codes that match the Regex Pattern with a given decoded text from a QR code, from Fedibird - https://github.com/fedibird/mastodon/tree/add-reject-pattern-in-media-attachments-v4.3.1)
 * Enable rejection of Create Activities if the status includes unusable hashtags, from https://github.com/mastodon/mastodon/pull/29264 (Not implemented in Mastodon yet)
+
+This branch is seperate since decoding and checking QR against the reject pattern will use more processing power. This requires the installation of [qrtool](https://github.com/sorairolake/qrtool) to work fully.
 
 To switch to this repo, run the following as the mastodon user:
 ```shell
 cd live
 git remote add mastodon-antispamtools https://github.com/chikorita157/mastodon-antispamtools.git
 git fetch mastodon-antispamtools
-git checkout mastodon-antispamtools/stable-4.3
+git checkout mastodon-antispamtools/stable-4.3-mediarejectpatterns
 ```
 
 Login as root and run the following:
@@ -25,6 +28,11 @@ RAILS_ENV=production bin/tootctl cache clear
 To switch back to the vanilla release:
 ```shell
 git checkout origin/stable-4.3
+```
+
+To switch to the regular antispamtools branch without QR checking:
+```shell
+git checkout mastodon-antispamtools/stable-4.3
 ```
 
 This repo will rebase when a new release of the current version becomes available.
